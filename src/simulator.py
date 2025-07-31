@@ -4,14 +4,18 @@ from pathlib import Path
 from datetime import datetime
 
 import pandas as pd
+import numpy as np
 
 
 output_dir = Path("data/processed")
 output_dir.mkdir(parents=True, exist_ok=True)
 
 # order sizes to simulate
-SIZES = [5, 50, 100, 500, 1000]
+# generating order size dynamically >> predefined order sizes
+sizes = np.logspace(np.log10(50), np.log10(5000), num=7).astype(int)
+sizes = np.unique(sizes)
 
+print("Order size grid: ", sizes)
 
 def simulate_impacts():
     records = []
@@ -23,7 +27,7 @@ def simulate_impacts():
             mid    = row["mid_price"]
             spread = row["spread"]
 
-            for x in SIZES:
+            for x in sizes:
                 try:
                     slippage = compute_slippage(asks, mid, x)
                     records.append({

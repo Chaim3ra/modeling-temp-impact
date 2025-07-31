@@ -1,5 +1,7 @@
 \documentclass[12pt, letterpaper]{article}
 \usepackage{graphicx}
+\usepackage{booktabs}
+
 
 \title{A study on temporary impact and optimal order execution strategies}
 \author{Chaitanya Agarwal}
@@ -12,7 +14,33 @@
 
 \section{Modeling temporary impact $g_t(x)$}
 
-1 - 2 pages.
+\begin{table}[ht]
+\centering
+\begin{tabular}{lrrr}
+\toprule
+Ticker & $\beta$ & RMSE & $R^2$ \\
+\midrule
+CRWV & $1.36\times10^{-4}$ & $9.82\times10^{-4}$ & $-0.0181$ \\
+FROG & $1.15\times10^{-4}$ & $5.46\times10^{-4}$ & $0.3008$  \\
+SOUN & $7.00\times10^{-6}$ & $1.40\times10^{-5}$ & $-106.5637$ \\
+\bottomrule
+\end{tabular}
+\caption{Linear fit results.}
+\end{table}
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{lrrrr}
+\toprule
+Ticker & $\alpha$ & $\gamma$ & RMSE & $\mathrm{R}^2$ \\
+\midrule
+CRWV & $2.3491\times10^{-2}$ & $0.2094$ & $1.4089\times10^{-4}$ & $0.8280$ \\
+FROG & $1.7070\times10^{-2}$ & $0.2290$ & $1.3025\times10^{-4}$ & $0.8435$ \\
+SOUN & $4.6790\times10^{-3}$ & $0.0213$ & $7.8967\times10^{-8}$ & $0.3676$ \\
+\bottomrule
+\end{tabular}
+\caption{Power-law fit results.}
+\end{table}
 
 \section{Order Execution Strategy}
 
