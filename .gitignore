@@ -6,3 +6,4 @@ write-up.log
 *.gz
 /data
 *.pyc
+/notebooks/.ipynb_checkpoints

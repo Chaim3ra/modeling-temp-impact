@@ -15,4 +15,4 @@ pip install -r requirements.txt
 ## Data
 
 - **Raw:** `data/raw/<TICKER>/*.csv`
-- **Processed:** `data/processed/simulated_impacts.csv`
+- **Processed:** `data/processed/impacts_<TIMESTAMP>.csv`

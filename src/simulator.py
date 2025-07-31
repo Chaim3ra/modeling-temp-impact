@@ -17,21 +17,20 @@ def simulate_impacts():
     records = []
     tickers = load_all_tickers("data/raw/")
     for ticker, df in tickers.items():
-        print("current ticker: ", ticker)
+        print("simulating from ticker: ", ticker)
         for _, row in df.iterrows():
             asks   = list(zip(row["ask_prices"], row["ask_sizes"]))
             mid    = row["mid_price"]
             spread = row["spread"]
 
             for x in SIZES:
-                print("simulating order size: ", x)
                 try:
-                    slip = compute_slippage(asks, mid, x)
+                    slippage = compute_slippage(asks, mid, x)
                     records.append({
                         "ticker": ticker,
                         "ts": row["ts_event"],
                         "size": x,
-                        "slippage": slip,
+                        "slippage": slippage,
                         "spread": spread
                     })
                 except ValueError:
