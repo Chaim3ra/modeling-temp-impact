@@ -9,3 +9,10 @@ R&amp;D for modeling temporary impact.
 python3 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
+```
+
+
+## Data
+
+- **Raw:** `data/raw/<TICKER>/*.csv`
+- **Processed:** `data/processed/simulated_impacts.csv`

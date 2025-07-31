@@ -11,6 +11,7 @@ def compute_slippage(
     """
 
     uniflled_orders = order_size
+    diff = 0.0
 
     for price, size in asks:
         # no. of shares that can be filled from the current level
@@ -19,11 +20,9 @@ def compute_slippage(
         diff += (price - mid_price) * curr_fill
         uniflled_orders -= curr_fill
 
-
         # if all orders have been filled
         if uniflled_orders == 0:
             break
-
 
 
     # if there are still some unfilled orders after walking the entire ask-side queue

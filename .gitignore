@@ -5,3 +5,4 @@
 write-up.log
 *.gz
 /data
+*.pyc

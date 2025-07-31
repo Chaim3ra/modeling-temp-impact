@@ -28,9 +28,9 @@ def load_orderbook(filepath: str) -> pd.DataFrame:
                 ts_cols[1]: 'ts_event'
             })
     
-    df['ts_event'] = pd.to_datetime(df['ts_event'])
-    df['ts_recv']  = pd.to_datetime(df['ts_recv'])
-
+    df['ts_recv']  = pd.to_datetime(df['ts_recv'],  utc=True, format='mixed')
+    df['ts_event'] = pd.to_datetime(df['ts_event'], utc=True, format='mixed')
+    
     # MBP-10, so we have only 10 levels
     bid_px_cols = [f"bid_px_{i:02d}" for i in range(10)]
     ask_px_cols = [f"ask_px_{i:02d}" for i in range(10)]
@@ -72,7 +72,7 @@ def load_ticker_data(ticker_dir: str) -> pd.DataFrame:
     return combined_dfs
 
 
-def load_tickers(data_dir: str) -> Dict[str, pd.DataFrame]:
+def load_all_tickers(data_dir: str) -> Dict[str, pd.DataFrame]:
     """
     Load orderbook data for all tickers under a base directory(data dir). 
     For now, we have three tickers but this can accomodate more in the future.
@@ -94,5 +94,5 @@ def load_tickers(data_dir: str) -> Dict[str, pd.DataFrame]:
 
 
 # testing
-if __name__ == "__main__":
-    load_tickers("data/")
+#if __name__ == "__main__":
+#   load_all_tickers("data/")
