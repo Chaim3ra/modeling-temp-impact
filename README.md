@@ -1,5 +1,5 @@
 # modeling-temp-impact
-R&amp;D for modeling temporary impact. 
+R&amp;D for market‐microstructure and optimal trade execution.
 
 ## Repository Structure
 
