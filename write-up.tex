@@ -33,7 +33,7 @@ We know, the temporary impact function $g_t(x)$ can be defined as the amount of 
 
 
 
-For my initial simulations, I considered the following order sizes \newline $\{5, 50, 100, 500, 1000\}$ to get a rough sense of the shape of the slippage curves. After plotting the median slippage curves on log-log axes(Figure \ref{fig:slippage_fixed_grid}), we observe that for CRWV and FROG, slippage grows with order size. 
+For my initial simulations, I considered the following order sizes \newline $\{5, 50, 100, 500, 1000\}$ to get a rough sense of the slippage curves. After plotting the median slippage curves on log-log axes(Figure \ref{fig:slippage_fixed_grid}), we observe that for CRWV and FROG, slippage grows with order size. 
 However, slippage remains flat for SOUN until larger order sizes($x  \geq 1000$). To capture a more representative curve for SOUN, I used a log-spaced grid of 7 unique points from 50 to 5000 shares(which increased the filesize from 3.38GB to 4.45GB).
 
 
@@ -158,7 +158,7 @@ As this is a concave function, we would need to minimize it using a non-convex s
 
 \begin{figure}[h!] % 'h' means here
     \centering
-    \includegraphics[width=0.65\textwidth]{res/images/optimized_slices_test.png} % Adjust width as needed
+    \includegraphics[width=0.79\textwidth]{res/images/optimized_slices_test.png} % Adjust width as needed
     \caption{Optmized slices for S=50,000, N=25}
     \label{fig:optimized_strategy} 
 \end{figure}
