@@ -7,3 +7,4 @@ write-up.log
 /data
 *.pyc
 /notebooks/.ipynb_checkpoints
+write-up.out
