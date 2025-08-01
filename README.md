@@ -49,32 +49,34 @@ R&amp;D for market‐microstructure and optimal trade execution.
 
 1. **Load raw snapshots**  
    Place your MBP-10 CSV files under `data/raw/` (organized by ticker/date).
+      ```bash
+   python src/dataloader.py
+   ```
+
 
 2. **Simulate slippage**  
    ```bash
-   python src/impact_model.py \
-     --input-dir data/raw/CRWV \
-     --output-file data/processed/impacts-<TIMESTAMP>.csv \
-     --sizes 5 50 100 500 1000
+   python src/simulator.py
    ```
-   Or rerun with a log-spaced grid:
-   ```bash
-   python src/impact_model.py \
-     --input-dir data/raw/CRWV \
-     --output-file data/processed/impacts-<TIMESTAMP>.csv \
-     --sizes $(python - <<'EOF'
-        import numpy as npprint(*np.unique(np.logspace(np.log10(50),np.log10(5000),7).astype(int)))
-        EOF
-   )
-   ```
+
+
+   This generates a csv file `data/processed/impacts_<TIMESTAMP>.csv` in the following format:
+   | Column     | Type       | Description                                                       |
+   |------------|------------|-------------------------------------------------------------------|
+   | `ticker`   | `string`   | Ticker symbol (e.g. `CRWV`, `FROG`, `SOUN`)                       |
+   | `ts`       | `datetime` | Matching‐engine‐received timestamp (from `ts_event`)              |
+   | `size`     | `integer`  | Order size in shares                                              |
+   | `slippage` | `float`    | Temporary impact per share: average execution price minus mid‐price |
+   | `spread`   | `float`    | Instantaneous bid–ask spread at the time of simulation            |
+
 
 3. **Explore & fit**  
    Open the notebook:
    ```bash
    jupyter lab notebooks/impact-analysis.ipynb
    ```
-   - Section 4: EDA (raw and median slippage curves)  
-   - Section 5: Model fitting (linear, power-law, AC-quadratic)
+   - EDA (mean and median slippage curves)  
+   - Model fitting (linear, power-law, AC-quadratic)
 
 
 
