@@ -7,7 +7,7 @@ R&amp;D for market‐microstructure and optimal trade execution.
 .
 ├── data/
 │   ├── raw/                   # original MBP-10 CSV snapshots (not tracked)
-│   └── processed/             # outputs from simulation (impacts.csv, median_slippage_by_size.csv)
+│   └── processed/             # outputs from simulation (impacts_<TIMESTAMP>.csv, m)
 ├── notebooks/
 │   └── impact-analysis.ipynb  # EDA & model fitting (linear, power-law, AC quadratic)
 ├── res/
@@ -73,7 +73,7 @@ R&amp;D for market‐microstructure and optimal trade execution.
 3. **Explore & fit**  
    Open the notebook:
    ```bash
-   jupyter lab notebooks/impact-analysis.ipynb
+   jupyter lab notebooks/impact_analysis.ipynb
    ```
    - EDA (mean and median slippage curves)  
    - Model fitting (linear, power-law, AC-quadratic)
